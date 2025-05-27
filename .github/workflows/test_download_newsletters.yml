@@ -1,0 +1,32 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Test Generate DCP Report
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Runs at 12am UTC every Sunday
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  NEWSLETTERS_URL: ${{ vars.NEWSLETTERS_URL }}
+  NEWSLETTERS_OUTPUT_DIR: ${{ vars.NEWSLETTERS_OUTPUT_DIR }}
+  NEWSLETTERS_REPORT_DIR: ${{ vars.NEWSLETTERS_REPORT_DIR }}
+  NEWSLETTERS_REGEX: ${{ vars.NEWSLETTERS_REGEX }}
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install tools
+      run: make install-tools
+
+    - name: Test Download Newsletters & Recognitions
+      run: make test
+
