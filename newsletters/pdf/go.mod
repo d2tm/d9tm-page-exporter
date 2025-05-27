@@ -1,4 +1,4 @@
-module github.com/d2tm/git remote /newsletters/pdf
+module github.com/d2tm/d9tm-page-exporter/newsletters/pdf
 
 go 1.24.0
 
