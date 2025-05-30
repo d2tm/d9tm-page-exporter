@@ -1,5 +1,5 @@
 # Export Newsletters, Recognitions and Photo Gallery from District 9 Toastmasters
-Check the Club DCP status page to generate the current DCP report in Yaml and image formats.
+Scrape the District 9 Free Toast Hosts newsletters, recognitions and photo gallery web pages, navigate to the target URLs and export them to PDF.
 
 ## Install tools
 Install go lang and nodejs

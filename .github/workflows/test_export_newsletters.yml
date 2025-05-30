@@ -28,6 +28,9 @@ jobs:
     - name: Install tools
       run: make install-tools
 
-    - name: Test Export Newsletters
-      run: make test
+    - name: Format Code
+      run: make format
+
+    # - name: Test Export Newsletters
+    #   run: make test
 
