@@ -1,12 +1,15 @@
 Text,File Name,Status
 MAY 2025,MAY_2025.pdf,success
+happy-new-toastmasters-year-17612971,happy-new-toastmasters-year-17612971.pdf,success
 Powerhouse May 2025,POWERHOUSE_MAY_2025.pdf,success
 Powerhouse April 2025,POWERHOUSE_APRIL_2025.pdf,success
 Powerhouse March 2025,POWERHOUSE_MARCH_2025.pdf,success
 Powerhouse Feb. 2025,POWERHOUSE_FEB_2025.pdf,failure
+Powerhouse,POWERHOUSE.pdf,success
+;,.pdf,success
 Jan. 2025,JAN_2025.pdf,failure
-Powerhouse, Dec. 2024,POWERHOUSE_DEC_2024.pdf,success
-Powerhouse, Nov. 2024,POWERHOUSE_NOV_2024.pdf,success
+Powerhouse; Dec. 2024,POWERHOUSE_DEC_2024.pdf,success
+Powerhouse; Nov. 2024,POWERHOUSE_NOV_2024.pdf,success
 Powerhouse Oct 2024,POWERHOUSE_OCT_2024.pdf,success
 Powerhouse Sept 2024,POWERHOUSE_SEPT_2024.pdf,success
 Powerhouse Aug 2024,POWERHOUSE_AUG_2024.pdf,success
@@ -47,12 +50,12 @@ Powerhouse Plus Aug 2020,POWERHOUSE_PLUS_AUG_2020.pdf,success
 Powerhouse Aug 2020,POWERHOUSE_AUG_2020.pdf,success
 Powerhouse Plus July 2020,POWERHOUSE_PLUS_JULY_2020.pdf,success
 Powerhouse July 2020,POWERHOUSE_JULY_2020.pdf,success
-Jan 2019 Powerhouse,JAN_2019_POWERHOUSE.pdf,success
-June 2016,JUNE_2016.pdf,success
-May 2016,MAY_2016.pdf,success
-March 2016,MARCH_2016.pdf,success
-February 2016,FEBRUARY_2016.pdf,success
-December 2015,DECEMBER_2015.pdf,success
+Jan 2019 Powerhouse,JAN_2019_POWERHOUSE.pdf,failure
+June 2016,JUNE_2016.pdf,failure
+May 2016,MAY_2016.pdf,failure
+March 2016,MARCH_2016.pdf,failure
+February 2016,FEBRUARY_2016.pdf,failure
+December 2015,DECEMBER_2015.pdf,failure
 Powerhouse June 2023,12June2023District9PowerhouseNewsletter.pdf,success
 Powerhouse May 2023,11_District_9_Powerhouse_Newsletter_May_2023_13_.pdf,success
 Powerhouse April 2023,April2023District9PowerhouseNewsletter.pdf,success
@@ -79,17 +82,23 @@ Aug 2019 Powerhouse,Powerhouse_August_2019-reduced_size.pdf,success
 July 2019 Powerhouse,Powerhouse_July_2019-reduced_file_size.pdf,success
 June 2019 Powerhouse,District_9_Powerhouse_June_2019-Optimiized-compressed.pdf,success
 May 2019,1556659833_District_9_Powerhouse_May_2019.pdf,success
+Powerhouse,1556659833_District_9_Powerhouse_May_2019.pdf,success
 April 2019 Powerhouse,1554834992_District_9_Powerhouse_April_2019.pdf,success
 March 2019 Powerhouse,District_9_Powerhouse_March_2019.pdf,success
 Feb 2019 Powerhouse,District_9_Powerhouse_March_2019.pdf,success
 Nov 2018 Powerhouse,November_2018_powerhouse_rev1.pdf,success
 Sept 2018 Powerhouse,PowerHouse_Special_Edition_Sept_2018.pdf,success
 June 2018,D9NewsletterJune2018.pdf,success
+Powerhouse,D9NewsletterJune2018.pdf,success
 May 2018,D9NewsletterMay2018Bonus.pdf,success
+Powerhouse,D9NewsletterMay2018Bonus.pdf,success
 Feb 2018,D9NewsletterFebruary2018.pdf,success
+Powerhouse,D9NewsletterFebruary2018.pdf,success
 Dec 2017 Po,D9NewsletterDecember2017.pdf,success
+werhouse,D9NewsletterDecember2017.pdf,success
 Aug 2017 Powerhouse,D9NewsletterAugust2017.pdf,success
 July 2017 Power,D9NewsletterJuly2017.pdf,success
+August,,failure. open ../../output/newsletters: is a directory
 2015,,failure. open ../../output/newsletters: is a directory
 July 2015,ToastmastersDistrict9_July_2015.pdf,success
 May 2014,May2014Newsletter.pdf,success

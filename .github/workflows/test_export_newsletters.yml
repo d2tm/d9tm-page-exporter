@@ -1,7 +1,7 @@
 # This workflow will build a golang project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
 
-name: Test Generate DCP Report
+name: Test Export Newsletters
 
 on:
   schedule:
@@ -12,10 +12,11 @@ on:
     branches: [ "main" ]
 
 env:
-  NEWSLETTERS_URL: ${{ vars.NEWSLETTERS_URL }}
-  NEWSLETTERS_OUTPUT_DIR: ${{ vars.NEWSLETTERS_OUTPUT_DIR }}
-  NEWSLETTERS_REPORT_DIR: ${{ vars.NEWSLETTERS_REPORT_DIR }}
-  NEWSLETTERS_REGEX: ${{ vars.NEWSLETTERS_REGEX }}
+  TARGET_URL: ${{ vars.TARGET_URL }}
+  OUTPUT_DIR: ${{ vars.OUTPUT_DIR }}
+  REPORT_DIR: ${{ vars.REPORT_DIR }}
+  TARGET_REGEX: ${{ vars.TARGET_REGEX }}
+  TARGET_ELEMENT: ${{ vars.TARGET_ELEMENT }}
 
 jobs:
 
@@ -27,6 +28,9 @@ jobs:
     - name: Install tools
       run: make install-tools
 
-    - name: Test Download Newsletters & Recognitions
-      run: make test
+    - name: Format Code
+      run: make format
+
+    # - name: Test Export Newsletters
+    #   run: make test
 

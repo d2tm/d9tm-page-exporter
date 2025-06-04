@@ -20,13 +20,13 @@ type LinkInfo struct {
 }
 
 var (
-	yearRegex = regexp.MustCompile(os.Getenv("NEWSLETTERS_REGEX"))
+	yearRegex = regexp.MustCompile(os.Getenv("TARGET_REGEX"))
 )
 
 func main() {
-	pageURL := os.Getenv("NEWSLETTERS_URL")
-	outputDir := "../../" + os.Getenv("NEWSLETTERS_OUTPUT_DIR")
-	reportDir := "../../" + os.Getenv("NEWSLETTERS_REPORT_DIR")
+	pageURL := os.Getenv("TARGET_URL")
+	outputDir := "../../" + os.Getenv("OUTPUT_DIR")
+	reportDir := "../../" + os.Getenv("REPORT_DIR")
 
 	err := os.MkdirAll(outputDir, 0755)
 	if err != nil {
