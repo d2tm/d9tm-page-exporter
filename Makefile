@@ -1,10 +1,12 @@
 SHELL := /bin/bash -o pipefail
 
 PDF_EXPORTER=pdf-exporter
+IMAGE_EXPORTER=image-exporter
 NEWSLETTERS=newsletters
 NEWSLETTERS_PDF=$(NEWSLETTERS)/pdf
 RECOGNITIONS=recognitions
 PHOTO_GALLERY=photo_gallery
+IMAGE_LIBRARY=image_library
 
 .PHONY: test test-* format build
 
@@ -48,6 +50,11 @@ download-photo-gallery:
 	rm -Rf output/$(PHOTO_GALLERY) reports/$(PHOTO_GALLERY)
 	mkdir -p output/$(PHOTO_GALLERY)
 	pushd $(PDF_EXPORTER) && node download.js && popd
+
+download-image-library:
+	rm -Rf output/$(IMAGE_LIBRARY) reports/$(IMAGE_LIBRARY)
+	mkdir -p output/$(IMAGE_LIBRARY)
+	pushd $(IMAGE_EXPORTER) && node download.js && popd
 
 test: download-newsletters
 
