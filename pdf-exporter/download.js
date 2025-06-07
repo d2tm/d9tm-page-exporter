@@ -35,31 +35,67 @@ function logDownloadStatusToCsv(outputPath, fileName, text, status) {
     headless: "new",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
-  const page = await browser.newPage();
+  const context = browser.defaultBrowserContext();
+  const page = await context.newPage();
   const targetURL = process.env.TARGET_URL;
   const regExEnv = process.env.TARGET_REGEX || "";
   console.log(`Target URL: ${targetURL}`);
   console.log(
-    `Regex string from env: ${JSON.stringify(process.env.TARGET_REGEX)}`,
+    `Regex string from env: ${JSON.stringify(process.env.TARGET_REGEX)}`
   );
   const regEx = new RegExp(regExEnv, "g");
   console.log(`regEx.source:${regEx.source}`);
 
   await page.goto(targetURL, { waitUntil: "networkidle0" });
+  
+  // Check if cookies need to be set
+  const cookieNames = process.env.COOKIE_NAMES;
+  const cookieValues = process.env.COOKIE_VALUES;
+  const cookieDomain = process.env.COOKIE_DOMAIN;
+  // Calculate expiry: now + 4 hours (in seconds)
+  const cookieExpires = Math.floor(Date.now() / 1000) + 86400;
 
+  if (cookieNames != null && cookieValues != null && cookieDomain != null) {
+    const cookieNamesArr = cookieNames.split(/[\s,]+/);
+    const cookieValuesArr = cookieValues.split(/[\s,]+/);
+    for (i = 0; i < cookieNamesArr.length; i++) {
+      // Set a cookie that expires in 24 hours
+      console.log(`Setting cookie: ${cookieNamesArr[i]}`)
+      page.setCookie({
+        name: cookieNamesArr[i],
+        value: cookieValuesArr[i],
+        domain: cookieDomain,
+        path: "/",
+        httpOnly: false,
+        secure: false,
+        sameSite: "None",
+        expires: cookieExpires,
+      });
+    }
+  }
+
+  // Reload page with cookie
+  await page.reload({ waitUntil: 'networkidle0' });
+
+  // Debug: print cookies
+  const cookies = await context.cookies(targetURL);
+  console.log('Cookies:', cookies);
+
+  const sourceLinksRef = process.env.SOURCE_LINKS_REF
   // Find all links with MMM YYYY pattern
   const links = await page.$$eval(
-    "div[class*='MainContent'] a",
+    sourceLinksRef,
     (anchors, regExSource) => {
       const pattern = new RegExp(regExSource);
       return anchors
         .filter((a) => pattern.test(a.textContent))
         .map((a) => ({ href: a.href, text: a.textContent.trim() }));
     },
-    regEx.source,
+    regEx.source
   );
 
   console.log(`Found ${links.length} matching links`);
+  console.log(links)
 
   let count = 0;
   let status = "";
@@ -104,7 +140,7 @@ function logDownloadStatusToCsv(outputPath, fileName, text, status) {
                 throw new Error("❌ Node is not an HTMLElement");
               }
               return el.outerHTML;
-            },
+            }
           );
 
           if (!mainContentHTML || typeof mainContentHTML !== "string") {
@@ -133,7 +169,7 @@ function logDownloadStatusToCsv(outputPath, fileName, text, status) {
                       </body>
                     </html>
                   `,
-            { waitUntil: "networkidle0" },
+            { waitUntil: "networkidle0" }
           );
 
           // Generate the PDF
@@ -161,7 +197,7 @@ function logDownloadStatusToCsv(outputPath, fileName, text, status) {
       `${reportDir}/export_results.csv`,
       `${safeName}.pdf`,
       link.text ? link.text : safeName,
-      status,
+      status
     );
   }
 
